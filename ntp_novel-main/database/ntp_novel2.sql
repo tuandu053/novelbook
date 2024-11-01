@@ -100,7 +100,7 @@ DROP TABLE IF EXISTS `tblauthor`;
 CREATE TABLE IF NOT EXISTS `tblauthor` (
   `id` int NOT NULL AUTO_INCREMENT,
   `sNickName` varchar(100) NOT NULL,
-  `sDes` varchar(3000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `sDes` varchar(3000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `iStatus` int NOT NULL,
   `sCommit` text NOT NULL,
   `dCreateDay` datetime NOT NULL,
@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `tblauthor` (
   `sImg_identity` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_tblAuthor_tblUser` (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tblauthor`
@@ -139,7 +139,7 @@ CREATE TABLE IF NOT EXISTS `tblbill` (
   `iStatus` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_tblBill_tblUser` (`idUser`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -157,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `tblbookmarks` (
   PRIMARY KEY (`id`),
   KEY `FK_tblBookmarks_tblUser` (`idUser`),
   KEY `FK_tblBookmarks_tblNovel` (`idNovel`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tblbookmarks`
@@ -190,7 +190,7 @@ CREATE TABLE IF NOT EXISTS `tblcategories` (
   `dCreateDay` timestamp NULL DEFAULT NULL,
   `dUpdateDay` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tblcategories`
@@ -229,7 +229,7 @@ CREATE TABLE IF NOT EXISTS `tblchapter` (
   `iPrice` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `FK_tblChapter_tblNovel` (`idNovel`)
-) ENGINE=InnoDB AUTO_INCREMENT=114 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=114 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tblchapter`
@@ -361,7 +361,7 @@ CREATE TABLE IF NOT EXISTS `tblclassify` (
   PRIMARY KEY (`id`),
   KEY `FK_tblClassify_tblCategories` (`idCategories`),
   KEY `FK_tblClassify_tblNovel` (`idNovel`)
-) ENGINE=InnoDB AUTO_INCREMENT=212 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=212 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tblclassify`
@@ -408,7 +408,7 @@ CREATE TABLE IF NOT EXISTS `tblcomment` (
   KEY `FK_tblComment_tblUser` (`idUser`),
   KEY `FK_tblComment_tblComment` (`id_Comment_parent`),
   KEY `FK_tblComment_tblNovel` (`idNovel`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tblcomment`
@@ -434,17 +434,17 @@ CREATE TABLE IF NOT EXISTS `tblnovel` (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `sNovel` varchar(255) NOT NULL,
   `sCover` varchar(1000) DEFAULT NULL,
-  `sDes` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `sDes` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `dCreateDay` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP,
   `dUpdateDay` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP,
   `sProgress` int NOT NULL,
   `iStatus` int NOT NULL DEFAULT '1',
   `idUser` int UNSIGNED NOT NULL,
   `iLicense_Status` int NOT NULL DEFAULT '0',
-  `sLicense` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `sLicense` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_tblNovel_tblUser` (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tblnovel`
@@ -478,7 +478,7 @@ CREATE TABLE IF NOT EXISTS `tblpurchase_history` (
   PRIMARY KEY (`id`),
   KEY `FK_tblPurchase_History_tblChapter` (`idChapter`),
   KEY `FK_tblPurchase_History_tblUser` (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -496,7 +496,7 @@ CREATE TABLE IF NOT EXISTS `tblreading_history` (
   PRIMARY KEY (`id`),
   KEY `FK_tblReading_History_tblChapter` (`idChapter`),
   KEY `FK_tblReading_History_tblUser` (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=231 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=231 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tblreading_history`
@@ -641,15 +641,15 @@ DROP TABLE IF EXISTS `tblreport`;
 CREATE TABLE IF NOT EXISTS `tblreport` (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `sTitle` varchar(255) NOT NULL,
-  `sContent` varchar(3000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `sReply` varchar(3000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `sContent` varchar(3000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sReply` varchar(3000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `iStatus` int DEFAULT '0',
   `idUser` int UNSIGNED NOT NULL,
   `dCreateDay` datetime DEFAULT NULL,
   `dUpdateDay` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_tblReport_tblUser` (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -668,7 +668,7 @@ CREATE TABLE IF NOT EXISTS `tblwithdraw` (
   `sBankAccountNumber` varchar(30) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_tblWithdraw_tblUser` (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
